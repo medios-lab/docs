@@ -1,0 +1,11 @@
+node_modules/
+.docusaurus/
+build/
+_upstream/
+static/llms.txt
+static/llms-full.txt
+static/llms-framework.txt
+static/llms-operator.txt
+static/md/
+.DS_Store
+*.log

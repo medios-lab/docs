@@ -1,0 +1,59 @@
+name: Sync Upstream OpenAPI & CLI Reference
+
+on:
+  workflow_dispatch:
+    inputs:
+      medios_ref:
+        description: "Branch or tag of medios-lab/medios to sync from"
+        required: false
+        default: "master"
+  repository_dispatch:
+    types: [medios-release]
+  schedule:
+    - cron: "0 7 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repository
+        uses: actions/checkout@v4
+
+      - name: Checkout medios-lab/medios
+        uses: actions/checkout@v4
+        with:
+          repository: medios-lab/medios
+          ref: ${{ github.event.inputs.medios_ref || github.event.client_payload.ref || 'master' }}
+          path: _upstream/medios
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync OpenAPI specs and regenerate CLI flag tables
+        run: |
+          node scripts/sync-sources.mjs --medios-dir _upstream/medios
+          node scripts/gen-cli-reference.mjs --medios-dir _upstream/medios
+
+      - name: Lint and verify build
+        run: |
+          npm run lint:docs
+          npm run build
+
+      - name: Open sync pull request if changed
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-upstream-medios
+          delete-branch: true
+          commit-message: "[sync] Update OpenAPI specs and CLI reference from medios-lab/medios"
+          title: "[sync] Update OpenAPI specs and CLI reference from medios-lab/medios"
+          body: |
+            Automated sync of `static/openapi/*.json` and `docs/cli/{controller,node,execute}.md` from `medios-lab/medios`.
+            `npm run lint:docs` and `npm run build` passed.
