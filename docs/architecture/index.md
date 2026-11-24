@@ -36,6 +36,7 @@ Medios uses **`controller`** for the cluster coordinator and **`node`** for the 
 ## Core architectural components
 
 - [Resource Offers & Accounting](/architecture/offers) — how offers, carving, roles, reservations, and gang requests work.
+- [Extending Resources](/architecture/extending-resources) — extending resource vocabulary (`medios-gpu`) and consumable lifecycle semantics (`medios-tokens`) with zero core modifications.
 - [Containerizers & Isolation](/architecture/containerizers) — `medios` vs. `docker_shell`, cgroups, namespaces, and POSIX rlimits.
 - [Task Lifecycle & Sandboxes](/architecture/task-lifecycle) — task states, executor handoff, and sandbox file layout.
 - [Networking Model](/architecture/networking) — host addressing, port ranges, and containerizer port binding.

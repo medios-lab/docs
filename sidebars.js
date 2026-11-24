@@ -27,6 +27,7 @@ const sidebars = {
       link: { type: 'doc', id: 'architecture/index' },
       items: [
         'architecture/offers',
+        'architecture/extending-resources',
         'architecture/containerizers',
         'architecture/task-lifecycle',
         'architecture/networking',

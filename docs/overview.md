@@ -26,7 +26,7 @@ Both daemons serve embedded OpenAPI 3 specifications at `/openapi.json` and `/.w
 
 ## What Medios provides
 
-- **Resource-offer brokering** with scalar resources, port ranges, opaque hardware metadata, role reservations, and atomic multi-node gang admission.
+- **Extensible resource-offer brokering** across built-in compute, exclusive equipment, reusable hardware (`medios-gpu`), and consumable external budgets (`medios-tokens`) — see [Extending Resources](/architecture/extending-resources).
 - **Two containerizers, one per cluster:** `medios` pulls OCI images directly without a Docker daemon; `docker_shell` delegates to the host `docker` CLI.
 - **Linux isolation** via cgroups v1 and v2, namespaces, POSIX rlimits, capabilities, seccomp, and operator-declared GPU devices.
 - **Shared dataset stores** declared per node as `store/<name>` resources with reader and writer unit accounting.
