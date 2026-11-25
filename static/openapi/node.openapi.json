@@ -11,7 +11,7 @@
   },
   "externalDocs": {
     "description": "Medios operator HTTP API documentation",
-    "url": "https://docs.medios.dev/api/operator"
+    "url": "https://medios-lab.github.io/docs/api/operator"
   },
   "x-medios-service": "node",
   "servers": [
@@ -167,7 +167,7 @@
         },
         "externalDocs": {
           "description": "Medios operator HTTP API reference",
-          "url": "https://docs.medios.dev/api/operator"
+          "url": "https://medios-lab.github.io/docs/api/operator"
         },
         "parameters": [
           {
@@ -247,7 +247,7 @@
         },
         "externalDocs": {
           "description": "Medios executor HTTP API reference",
-          "url": "https://docs.medios.dev/api/executor"
+          "url": "https://medios-lab.github.io/docs/api/executor"
         }
       }
     },

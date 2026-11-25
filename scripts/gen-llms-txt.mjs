@@ -20,7 +20,11 @@ const MD_OUT_DIR = path.join(STATIC_DIR, 'md');
 const sidebars = require(path.join(ROOT, 'sidebars.js'));
 const cfgText = fs.readFileSync(path.join(ROOT, 'docusaurus.config.js'), 'utf8');
 const urlMatch = cfgText.match(/\burl:\s*['"]([^'"]+)['"]/);
-const BASE_URL = (urlMatch ? urlMatch[1] : 'https://docs.medios.dev').replace(/\/$/, '');
+const baseUrlMatch = cfgText.match(/\bbaseUrl:\s*['"]([^'"]+)['"]/);
+if (!urlMatch || !baseUrlMatch) {
+  throw new Error('docusaurus.config.js must set url and baseUrl; llms.txt links are built from both');
+}
+const BASE_URL = (urlMatch[1].replace(/\/$/, '') + baseUrlMatch[1]).replace(/\/$/, '');
 
 function parseDoc(id) {
   const filePath = path.join(DOCS_DIR, `${id}.md`);
