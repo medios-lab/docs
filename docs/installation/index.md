@@ -19,7 +19,7 @@ Medios scales from a single workstation on loopback to a hardened multi-host clo
 ## Installation paths
 
 - [Requirements](/installation/requirements) — OS, runtime libraries, ports, and kernel support.
-- [Install Binaries & Images](/installation/install) — pre-built release tarballs and container images *(placeholder pending onboarding flow)*.
+- [Install Binaries](/installation/install) — pre-built release archives for macOS `arm64` and Linux `x86_64` and `arm64`.
 - [Docker Compose](/installation/docker) — run a networked controller and node inside containers.
 - [Build from Source](/installation/build-from-source) — compile with CMake, Ninja, and ccache.
 - [Uninstalling Medios](/installation/uninstall) — stop daemons and clean host state.
