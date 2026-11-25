@@ -7,8 +7,8 @@ const config = {
   tagline: 'A resource broker for agentic and AI workloads',
   favicon: 'img/favicon.svg',
 
-  url: 'https://docs.medios.dev',
-  baseUrl: '/',
+  url: 'https://medios-lab.github.io',
+  baseUrl: '/docs/',
 
   organizationName: 'medios-lab',
   projectName: 'docs',
