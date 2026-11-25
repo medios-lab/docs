@@ -8,8 +8,8 @@ doc_type: tutorial
 
 In about five minutes you start a local Medios controller and node, submit a task with `medios-execute`, and inspect its output.
 
-:::info Onboarding distribution placeholder
-The final pre-built installation method (macOS release tarballs and Docker images for Linux and other platforms) is being finalized as part of the onboarding-flow issue. Step 1 below is a placeholder; until pre-built artifacts are published, use [Build from Source](/installation/build-from-source) or [Docker Compose](/installation/docker).
+:::tip Let your coding agent do it
+Paste `Try Medios: https://medios-lab.github.io/try.txt` into Codex, Claude Code or Antigravity. The agent installs Medios in one directory, starts a controller and a node, and runs a first framework. This page covers the same ground by hand.
 :::
 
 ## What you need
@@ -17,11 +17,25 @@ The final pre-built installation method (macOS release tarballs and Docker image
 - A Linux (`x86_64` or `arm64`) or macOS (`arm64`) machine.
 - Three terminal windows.
 
-## 1. Install Medios binaries (placeholder)
+## 1. Install Medios binaries
 
-<!-- TBD: Replace with final macOS tarball / Docker image commands once the onboarding-flow issue closes. -->
+Download a release archive from [GitHub Releases](https://github.com/medios-lab/medios/releases), check it, and unpack it into `./medios`. Archive names carry the release's commit and the platform:
 
-Download or build the Medios binaries so `medios-controller`, `medios-node`, `medios-execute`, and `medios-executor` are available in `<medios-bin-dir>`.
+```sh
+VERSION=v0.1.14
+COMMIT=51a5f22e95d35ea56d3faead48be5d41ccbfbbf1
+PLATFORM=darwin-arm64        # or linux-amd64, linux-arm64
+NAME=medios-$COMMIT-$PLATFORM
+BASE=https://github.com/medios-lab/medios/releases/download/$VERSION
+
+curl -fsSLO $BASE/$NAME.tar.gz
+curl -fsSLO $BASE/$NAME.tar.gz.sha256
+shasum -a 256 -c $NAME.tar.gz.sha256      # Linux without shasum: sha256sum -c
+mkdir medios && tar -xzf $NAME.tar.gz -C medios --strip-components 1
+medios/bin/medios-controller --version
+```
+
+The binaries are in `medios/bin`; the libraries they load are in `medios/lib`. The commands below use `<medios-bin-dir>` for the absolute path of `medios/bin`.
 
 ## 2. Start the controller
 
@@ -59,22 +73,25 @@ LIBPROCESS_IP=127.0.0.1 <medios-bin-dir>/medios-execute \
   --command='echo hello-medios'
 ```
 
-Expected output:
+Expected output, after the log lines:
 
 ```text
-Subscribed with ID <framework-id>
-Submitted task 'hello' to node <node-id>
+Submitted task 'hello' to node '<node-id>'
 Received status update TASK_STARTING for task 'hello'
+  source: SOURCE_EXECUTOR
 Received status update TASK_RUNNING for task 'hello'
+  source: SOURCE_EXECUTOR
 Received status update TASK_FINISHED for task 'hello'
+  message: 'Command exited with status 0'
+  source: SOURCE_EXECUTOR
 ```
 
 ## 5. Read the task output
 
-The node captures task `stdout` and `stderr` inside its sandbox under `/tmp/medios-node/nodes/<node-id>/frameworks/<framework-id>/executors/hello/runs/<container-id>/stdout`:
+The node captures task `stdout` and `stderr` inside its sandbox under `/tmp/medios-node/nodes/<node-id>/frameworks/<framework-id>/executors/hello/runs/<container-id>/stdout`. `runs/latest` links to the most recent run:
 
 ```sh
-cat /tmp/medios-node/nodes/*/frameworks/*/executors/hello/runs/*/stdout
+cat /tmp/medios-node/nodes/*/frameworks/*/executors/hello/runs/latest/stdout
 ```
 
 ```text

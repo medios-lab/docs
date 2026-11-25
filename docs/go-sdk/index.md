@@ -15,7 +15,7 @@ Building in another language? Use [OpenAPI Discovery & Specs](/api/openapi) with
 Requires Go 1.25+. No CGO is required (`modernc.org/sqlite` is pure Go). Pin a tagged release:
 
 ```sh
-go get github.com/medios-lab/medios-sdk-go@v0.15.0
+go get github.com/medios-lab/medios-sdk-go@v0.17.0
 ```
 
 ## Ownership boundary
