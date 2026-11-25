@@ -18,4 +18,5 @@ A `TaskInfo` describes what a node executes, what resources it consumes, and how
 - [Progress & Stall Detection](/workloads/progress-and-stalls) — report typed progress and kill stalled tasks automatically.
 - [Task Finish Hooks](/workloads/finish-hooks) — run a bounded post-exit hook after the work command exits.
 - [Budget LLM Token Spend with `medios-tokens`](/workloads/token-budget-tutorial) — hands-on tutorial for consumable token budgets, finish-hook settlement, and per-task scoped OpenRouter keys.
+- [Advanced: Multi-Agent Budget Contention vs. Orchestration](/workloads/multi-agent-budget-tutorial) — live benchmark comparing naive FIFO contention against a budget-aware orchestrator sharing one token pool.
 - [Multi-Node Gang Admission](/workloads/gang-admission) — reserve and launch multi-node jobs atomically.

@@ -222,6 +222,7 @@ You added consumable budget semantics (`reserve -> spend -> settle -> refill`) t
 
 ## What's next
 
+- [Advanced: Multi-Agent Budget Contention vs. Orchestration](/workloads/multi-agent-budget-tutorial) — see N agents compete over one `token_budget` pool under naive FIFO contention vs. a budget-aware orchestrator
 - [Extending Resources](/architecture/extending-resources) — architectural comparison of `medios-gpu` and `medios-tokens`
 - [Task Finish Hooks](/workloads/finish-hooks) — full specification of `TaskInfo.finish`, caps, and environment variables
 - [`medios-tokens` repository](https://github.com/medios-lab/medios-tokens) — Go source, unit tests, and worked examples

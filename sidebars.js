@@ -70,6 +70,7 @@ const sidebars = {
         'workloads/progress-and-stalls',
         'workloads/finish-hooks',
         'workloads/token-budget-tutorial',
+        'workloads/multi-agent-budget-tutorial',
         'workloads/gang-admission',
       ],
     },
