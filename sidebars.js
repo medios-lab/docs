@@ -69,6 +69,7 @@ const sidebars = {
         'workloads/watch-for-nan',
         'workloads/progress-and-stalls',
         'workloads/finish-hooks',
+        'workloads/token-budget-tutorial',
         'workloads/gang-admission',
       ],
     },

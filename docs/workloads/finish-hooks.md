@@ -117,6 +117,7 @@ A kill partway through reports the work as killed and the hook as having packed 
 
 ## What's next
 
+- [Budget LLM Token Spend with `medios-tokens`](/workloads/token-budget-tutorial) — worked tutorial using `TaskInfo.finish` to settle consumable API budgets
 - [Task observers](/workloads/task-observers)
 - [Task state reasons](/reference/task-state-reasons)
 - [Scheduler HTTP API](/api/scheduler)

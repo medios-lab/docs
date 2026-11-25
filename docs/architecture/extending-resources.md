@@ -61,6 +61,7 @@ UPDATE_STATE token_budget=40  (refill +40 via SIGUSR1; offers resume immediately
 
 ## What's next
 
+- [Budget LLM Token Spend with `medios-tokens`](/workloads/token-budget-tutorial) — step-by-step tutorial covering Task Finish Hook settlement and per-task scoped OpenRouter keys
 - [Resource Offers & Accounting](/architecture/offers)
 - [Declaring GPUs & Hardware](/operations/gpus)
 - [OpenAPI Discovery & Specs](/api/openapi) — full `ResourceProviderCall` and `ResourceProviderEvent` schemas in `node.openapi.json`

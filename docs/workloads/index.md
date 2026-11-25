@@ -17,4 +17,5 @@ A `TaskInfo` describes what a node executes, what resources it consumes, and how
 - [Watch Task Output for NaN](/workloads/watch-for-nan) — detect training NaNs within a second.
 - [Progress & Stall Detection](/workloads/progress-and-stalls) — report typed progress and kill stalled tasks automatically.
 - [Task Finish Hooks](/workloads/finish-hooks) — run a bounded post-exit hook after the work command exits.
+- [Budget LLM Token Spend with `medios-tokens`](/workloads/token-budget-tutorial) — hands-on tutorial for consumable token budgets, finish-hook settlement, and per-task scoped OpenRouter keys.
 - [Multi-Node Gang Admission](/workloads/gang-admission) — reserve and launch multi-node jobs atomically.
