@@ -11,7 +11,7 @@
   },
   "externalDocs": {
     "description": "Medios operator HTTP API documentation",
-    "url": "https://docs.medios.dev/api/operator"
+    "url": "https://medios-lab.github.io/docs/api/operator"
   },
   "x-medios-service": "controller",
   "servers": [
@@ -183,7 +183,7 @@
         },
         "externalDocs": {
           "description": "Medios operator HTTP API reference",
-          "url": "https://docs.medios.dev/api/operator"
+          "url": "https://medios-lab.github.io/docs/api/operator"
         }
       }
     },
@@ -287,7 +287,7 @@
         },
         "externalDocs": {
           "description": "Medios scheduler HTTP API reference",
-          "url": "https://docs.medios.dev/api/scheduler"
+          "url": "https://medios-lab.github.io/docs/api/scheduler"
         }
       }
     },
