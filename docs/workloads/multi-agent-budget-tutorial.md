@@ -5,6 +5,10 @@ doc_type: tutorial
 
 # Advanced: multi-agent budget contention vs. orchestration
 
+:::note Research Preview
+This benchmark exercises `medios-tokens` (research preview) on local single-node clusters. See the full experimental writeup in [`medios-lab/medios-tokens/papers/`](https://github.com/medios-lab/medios-tokens/tree/main/papers).
+:::
+
 In the [previous tutorial](/workloads/token-budget-tutorial), you attached `medios-tokens` to a single cluster and settled individual tasks. Now look at what happens when **multiple agents share one `token_budget` pool**.
 
 This walkthrough demonstrates the second half of Medios's two-level scheduling thesis: **mechanism lives in the broker and resource provider; policy lives in the scheduler.**

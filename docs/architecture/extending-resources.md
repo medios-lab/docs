@@ -25,7 +25,18 @@ flowchart LR
 
 1. **Static named scalars (`--resources`):** For mutually exclusive equipment (`oscilloscope:1`, `bench_rig:1`) or fixed concurrency slots (`api_slots:4`) that need no kernel enforcement or dynamic supply, declare the resource name directly in `medios-node --resources`. Medios offers, carves, and restores it automatically with zero extra code.
 2. **In-process `Isolator` module (`medios-gpu`):** For hardware that requires kernel or container enforcement at launch (`prepare`, `isolate`, `cleanup`, and restart `recover`), load a shared library via `--modules` and `--isolation`. `medios-gpu` proves you can extend the **resource vocabulary** without modifying Medios core.
-3. **External HTTP `ResourceProvider` (`medios-tokens`):** For dynamic or non-hardware capacity — API token budgets, rate limits, external leases — run an out-of-process HTTP client against `medios-node` `POST /api/v1/resource_provider`. `medios-tokens` proves you can extend **resource lifecycle semantics** (reusable to consumable) without modifying Medios core.
+3. **External HTTP `ResourceProvider` (`medios-tokens`, Research Preview):** For dynamic or non-hardware capacity — API token budgets, rate limits, external leases — run an out-of-process HTTP client against `medios-node` `POST /api/v1/resource_provider`. `medios-tokens` proves you can extend **resource lifecycle semantics** (reusable to consumable) without modifying Medios core.
+
+## How this differs from AI gateways and cluster quotas
+
+Most LLM stacks enforce token budgets at one of two disconnected layers:
+
+- **L7 AI gateways (LiteLLM, Portkey, Envoy AI Gateway):** Intercept HTTP traffic *after* a task is already scheduled and return HTTP `429` once a key or token bucket is exhausted. Because the cluster scheduler is blind to gateway budgets, multi-step agent pipelines still claim compute and burn partial work before failing mid-flight.
+- **Cluster extended resources (Kubernetes device plugins, Ray custom resources, Slurm GRES/TRES):** Model *reusable* capacity (allocate on start, release on exit) or post-hoc accounting rather than a real-time consumable `reserve -> spend -> settle` financial ledger.
+
+Brokering `token_budget` through an HTTP `ResourceProvider` exposes live remaining spend **atomically inside the same resource offer as `cpus`, `mem`, and `gpus`** before a container ever launches. Budget-aware schedulers can pre-plan multi-step chains, downgrade model tiers below a watermark, or wait cleanly without burning partial runs—while keeping zero accounting logic inside Medios core.
+
+See the accompanying research preview technical note in [`medios-lab/medios-tokens/papers/`](https://github.com/medios-lab/medios-tokens/tree/main/papers) for the full protocol analysis and live multi-agent contention benchmarks.
 
 ## Reference pair: `medios-gpu` vs. `medios-tokens`
 

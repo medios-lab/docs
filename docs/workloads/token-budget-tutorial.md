@@ -5,6 +5,10 @@ doc_type: tutorial
 
 # Budget LLM token spend with `medios-tokens`
 
+:::note Research Preview
+`medios-tokens` is a **research preview** reference implementation demonstrating consumable API budgets on an unmodified Medios broker (single provider, single node). See the accompanying [technical note (PDF & LaTeX)](https://github.com/medios-lab/medios-tokens/tree/main/papers) for the experimental writeup.
+:::
+
 In about ten minutes you will attach [`medios-tokens`](https://github.com/medios-lab/medios-tokens) to an unmodified Medios cluster, watch a consumable `token_budget` scalar appear in node offers alongside `cpus` and `mem`, and settle real task spend back into the pool using two patterns:
 
 1. **Pattern 1 — Task Finish Hook settlement:** The task records its spend in `./usage.json`, and Medios's `TaskInfo.finish` hook posts actual consumption to `POST /settle`. Works with any LLM provider and fails closed if usage is missing.
